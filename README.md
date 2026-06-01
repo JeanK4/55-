@@ -1,212 +1,101 @@
-# Club55
+# Club 55+ — Sprint 1
 
-Plataforma web orientada a adultos mayores que permite descubrir, reservar y gestionar actividades recreativas, culturales, educativas y de bienestar. Además, facilita la interacción entre adultos mayores, cuidadores y proveedores de servicios.
-
----
-
-## Descripción
-
-Club55 es una aplicación web desarrollada para promover la participación social y el bienestar de los adultos mayores mediante una interfaz sencilla e intuitiva.
-
-La plataforma permite:
-
-* Consultar actividades disponibles.
-* Realizar reservas.
-* Gestionar reservas activas e historial.
-* Vincular cuidadores con adultos mayores.
-* Administrar actividades por parte de proveedores.
-* Recibir notificaciones y mensajes.
-* Acceder a contenido de salud y entretenimiento.
+Prototipo funcional del sistema **Club 55+** desarrollado con **Next.js 14 + TypeScript + Tailwind CSS** como parte del curso *Procesos y Diseño de Software* — Pontificia Universidad Javeriana Cali, 2026-1.
 
 ---
 
-## Tecnologías utilizadas
+## Funcionalidades incluidas (Sprint 1)
 
-* Next.js 14
-* React
-* TypeScript
-* Tailwind CSS
-* LocalStorage para persistencia de datos
-* Lucide React (iconografía)
-
----
-
-## Roles del sistema
-
-### Adulto Mayor
-
-Puede:
-
-* Explorar actividades.
-* Realizar reservas.
-* Cancelar reservas.
-* Consultar historial.
-* Acceder a contenido de bienestar.
-
-### Cuidador
-
-Puede:
-
-* Consultar las reservas del adulto mayor vinculado.
-* Supervisar actividades.
-* Consultar historial de participación.
-
-### Proveedor
-
-Puede:
-
-* Crear actividades.
-* Editar actividades existentes.
-* Cancelar actividades.
-* Consultar participantes inscritos.
+| RF | Funcionalidad | Estado |
+|----|---------------|--------|
+| RF-11 | Registro e inicio de sesión (sin contraseña) | ✅ |
+| RF-03 | Perfil + verificación de edad ≥ 55 (R-1) | ✅ |
+| RF-12 | Roles diferenciados: Adulto Mayor / Proveedor | ✅ |
+| RF-04 | Proveedor publica y gestiona actividades | ✅ |
+| RF-02 | Visualización detallada de actividades | ✅ |
+| RF-01 | Búsqueda y filtrado (texto + categoría + cupos) | ✅ |
+| RF-05 | Reserva y cancelación de cupos | ✅ |
+| RF-06 | Historial de reservas (activas + pasadas) | ✅ |
 
 ---
 
-## Funcionalidades principales
-
-### Gestión de actividades
-
-* Visualización de actividades disponibles.
-* Clasificación por categorías.
-* Consulta de información detallada.
-* Gestión de cupos.
-
-### Sistema de reservas
-
-* Reserva de actividades.
-* Cancelación de reservas.
-* Historial de participación.
-* Lista de espera.
-
-### Gestión de usuarios
-
-* Registro de usuarios.
-* Inicio de sesión.
-* Administración de perfiles.
-* Vinculación cuidador–adulto mayor.
-
-### Notificaciones
-
-* Confirmaciones de reserva.
-* Cancelaciones.
-* Actualizaciones de actividades.
-
----
-
-## Estructura del proyecto
-
-```text
-src/
-│
-├── app/
-│   ├── actividades/
-│   ├── login/
-│   ├── perfil/
-│   ├── mis-reservas/
-│   ├── mensajes/
-│   └── salud/
-│
-├── components/
-│
-├── lib/
-│   ├── store.ts
-│   ├── types.ts
-│   └── format.ts
-│
-└── styles/
-```
-
----
-
-## Instalación
-
-Clonar el repositorio:
+## Instalación y ejecución
 
 ```bash
-git clone https://github.com/usuario/club55.git
-```
-
-Ingresar al proyecto:
-
-```bash
-cd club55
-```
-
-Instalar dependencias:
-
-```bash
+# 1. Instalar dependencias
 npm install
-```
 
-Ejecutar en modo desarrollo:
-
-```bash
+# 2. Ejecutar en modo desarrollo
 npm run dev
-```
 
-Abrir en el navegador:
-
-```text
-http://localhost:3000
-```
-
----
-
-## Construcción para producción
-
-Generar la versión optimizada:
-
-```bash
-npm run build
-```
-
-Ejecutar producción:
-
-```bash
-npm start
+# 3. Abrir en el navegador
+# http://localhost:3000
 ```
 
 ---
 
 ## Cuentas de prueba
 
-### Adulto Mayor
+Inicia sesión con cualquiera de estas cuentas demo (solo con el correo):
 
-```text
-maria@club55.demo
+| Correo | Rol |
+|--------|-----|
+| `tertulia@club55.demo` | Proveedor |
+| `bienestar@club55.demo` | Proveedor |
+| `acuaparque@club55.demo` | Proveedor |
+
+O **crea una cuenta nueva** como adulto mayor desde `/registro`.
+
+---
+
+## Estructura del proyecto
+
 ```
-
-### Cuidador
-
-```text
-laura@club55.demo
-```
-
-### Proveedor
-
-```text
-tertulia@club55.demo
+src/
+├── app/                        # Páginas Next.js (App Router)
+│   ├── page.tsx                # Landing page
+│   ├── login/page.tsx          # Inicio de sesión (RF-11)
+│   ├── registro/page.tsx       # Registro + verificación edad (RF-03, R-1)
+│   ├── actividades/
+│   │   ├── page.tsx            # Listado y búsqueda (RF-01, RF-02)
+│   │   └── [id]/page.tsx       # Detalle + reserva (RF-05)
+│   ├── mis-reservas/page.tsx   # Historial de reservas (RF-06)
+│   └── proveedor/
+│       ├── page.tsx            # Dashboard del proveedor (RF-04)
+│       └── nueva-actividad/    # Crear actividad (RF-04)
+├── components/
+│   ├── AuthProvider.tsx        # Context de autenticación
+│   ├── NavBar.tsx              # Navegación principal
+│   └── ActividadCard.tsx       # Tarjeta de actividad reutilizable
+├── lib/
+│   ├── types.ts                # Tipos de dominio (SRS sección 4.1)
+│   ├── store.ts                # Capa de datos (localStorage → reemplazar por API REST)
+│   └── format.ts               # Helpers de formato en español
+└── data/
+    └── seed.ts                 # Datos demo de actividades y proveedores
 ```
 
 ---
 
-## Almacenamiento de datos
+## Decisiones técnicas
 
-Actualmente la aplicación utiliza LocalStorage para almacenar:
-
-* Usuarios
-* Actividades
-* Reservas
-* Notificaciones
-* Mensajes
-* Vinculaciones entre usuarios
-
-No requiere base de datos externa para su funcionamiento.
+- **Persistencia**: `localStorage` en el cliente. La capa `src/lib/store.ts` está diseñada como una abstracción que en el Sprint 2 se reemplaza por llamadas al API REST (Spring Boot), sin cambios en las páginas.
+- **Sin autenticación real**: El Sprint 1 no implementa contraseña. La autenticación OAuth (Google/Facebook) y JWT se implementarán en el Sprint 2 (RF-11 completo).
+- **Tipografía**: DM Serif Display + Plus Jakarta Sans — tipografías accesibles para adultos mayores.
+- **Accesibilidad**: Botones con área mínima de 48px (WCAG 2.1), contraste alto, foco visible (RNF-01, RNF-02).
 
 ---
 
-## Autores
+## Próximo Sprint
 
-Proyecto desarrollado como parte de una actividad académica para la gestión de actividades y bienestar de adultos mayores.
+- [ ] Autenticación real con contraseña / OAuth (RF-11)
+- [ ] Sistema de notificaciones (RF-08)
+- [ ] Recomendaciones personalizadas (RF-07)
+- [ ] Mensajería usuario–proveedor (RF-09)
+- [ ] Calificación y comentarios (RF-10)
+- [ ] Cuidador vinculado (RF-12)
+- [ ] Calendario de actividades (RF-16)
 
 ---
+
+*Metodología: Rational Unified Process (RUP) · Modelado: UML · Javeriana Cali 2026-1*

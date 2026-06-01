@@ -297,7 +297,7 @@ export default function NavBar() {
                   onClick={() => setAbierto(false)}
                   className="block px-4 py-3 rounded-soft text-lg font-medium hover:bg-sand"
                 >
-                  {l.label}
+                  {l.label.es}
                 </Link>
               ))}
               <button

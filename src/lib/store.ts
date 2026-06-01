@@ -133,8 +133,15 @@ const RECOMENDACIONES_SALUD_SEED: RecomendacionSalud[] = [
 // Inicializa datos de demo la primera vez
 export function initStore() {
   if (!isBrowser()) return;
-  const yaIniciado = localStorage.getItem('club55_init');
-  if (yaIniciado) return;
+  const usuarios = readArray<Usuario>(KEYS.usuarios);
+
+if (
+  usuarios.some(u => u.correo === 'maria@club55.demo') &&
+  usuarios.some(u => u.correo === 'laura@club55.demo') &&
+  usuarios.some(u => u.correo === 'tertulia@club55.demo')
+) {
+  return;
+}
 
   writeArray(KEYS.usuarios, [...PROVEEDORES_DEMO, ...ADULTOS_DEMO, ...CUIDADORES_DEMO]);
   writeArray(KEYS.actividades, ACTIVIDADES_DEMO);
