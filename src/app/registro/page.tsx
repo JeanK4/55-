@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/components/AuthProvider';
@@ -8,7 +8,7 @@ import { crearUsuario, calcularEdad, crearVinculoCuidador, obtenerAdultoPorCodig
 import type { Rol } from '@/lib/types';
 import { UserPlus, AlertCircle, Check } from 'lucide-react';
 
-export default function RegistroPage() {
+function RegistroContent() {
   const { iniciarSesion } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -364,5 +364,13 @@ export default function RegistroPage() {
         </p>
       </form>
     </div>
+  );
+}
+
+export default function RegistroPage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <RegistroContent />
+    </Suspense>
   );
 }
