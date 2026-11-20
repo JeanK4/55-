@@ -2,6 +2,8 @@
 
 Plataforma web orientada a adultos mayores que permite descubrir, reservar y gestionar actividades recreativas, culturales, educativas y de bienestar. Además, facilita la interacción entre adultos mayores, cuidadores y proveedores de servicios.
 
+**Demo en vivo:** [https://55plus.vercel.app](https://55plus.vercel.app)
+
 ---
 
 ## Descripción
@@ -123,13 +125,13 @@ src/
 Clonar el repositorio:
 
 ```bash
-git clone https://github.com/usuario/club55.git
+git clone https://github.com/JeanK4/55-.git
 ```
 
 Ingresar al proyecto:
 
 ```bash
-cd club55
+cd 55-
 ```
 
 Instalar dependencias:
