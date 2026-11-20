@@ -273,7 +273,7 @@ function RegistroContent() {
               max={new Date().toISOString().split('T')[0]}
               className="w-full px-5 py-4 text-lg rounded-soft border-2 border-coffee/20 bg-cream focus:border-clay focus:outline-none transition-colors"
             />
-            <p className="text-sm text-coffee/60 mt-2">
+            <p className="text-sm text-coffee/70 mt-2">
               Verificaremos que tengas 55 años o más. (Restricción R-1 del SRS).
             </p>
           </div>
@@ -309,7 +309,7 @@ function RegistroContent() {
               placeholder="C55-XXXXXX"
               className="w-full px-5 py-4 text-lg rounded-soft border-2 border-coffee/20 bg-cream focus:border-clay focus:outline-none transition-colors"
             />
-            <p className="text-sm text-coffee/60 mt-2">
+            <p className="text-sm text-coffee/70 mt-2">
               El adulto mayor puede ver su código en la sección Mi perfil.
             </p>
           </div>
@@ -319,7 +319,7 @@ function RegistroContent() {
         {rol === 'adulto_mayor' && (
           <div>
             <label className="block text-base font-semibold text-ink mb-2">
-              ¿Qué te interesa? <span className="font-normal text-coffee/60">(opcional)</span>
+              ¿Qué te interesa? <span className="font-normal text-coffee/70">(opcional)</span>
             </label>
             <div className="flex flex-wrap gap-2">
               {interesesDisponibles.map(i => (

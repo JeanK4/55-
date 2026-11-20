@@ -95,7 +95,7 @@ export default function PerfilPage() {
           <div className="w-20 h-20 rounded-full bg-sand overflow-hidden flex items-center justify-center">
             {form.fotoUrl
               ? <img src={form.fotoUrl} alt="Foto de perfil" className="w-full h-full object-cover" />
-              : <User className="w-8 h-8 text-coffee/60" />}
+              : <User className="w-8 h-8 text-coffee/70" />}
           </div>
           <div>
             <label className="block text-sm font-semibold text-ink mb-2">Foto de perfil</label>
@@ -105,7 +105,7 @@ export default function PerfilPage() {
               onChange={e => handleSubirFoto(e.target.files?.[0] ?? null)}
               className="text-sm"
             />
-            {subiendo && <p className="text-xs text-coffee/60">Subiendo foto...</p>}
+            {subiendo && <p className="text-xs text-coffee/70">Subiendo foto...</p>}
           </div>
         </div>
 
@@ -211,7 +211,7 @@ export default function PerfilPage() {
                     <div key={v.id} className="flex items-center justify-between px-4 py-3 rounded-soft bg-sand/60 border border-coffee/10">
                       <div>
                         <div className="font-semibold text-ink">{cuidador?.nombre ?? 'Cuidador'}</div>
-                        <div className="text-xs text-coffee/60">{cuidador?.correo}</div>
+                        <div className="text-xs text-coffee/70">{cuidador?.correo}</div>
                       </div>
                       <button
                         onClick={() => revocarVinculo(v.id)}

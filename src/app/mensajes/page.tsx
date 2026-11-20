@@ -108,11 +108,11 @@ function MensajesContent() {
                 }`}
               >
                 <div className="font-semibold text-ink">{nombreConversacion(c)}</div>
-                <div className="text-xs text-coffee/60">{new Date(c.fechaActualizacion).toLocaleString()}</div>
+                <div className="text-xs text-coffee/70">{new Date(c.fechaActualizacion).toLocaleString()}</div>
               </button>
             ))}
             {!vinculo && usuario.rol !== 'proveedor' && (
-              <div className="text-xs text-coffee/60 px-3">
+              <div className="text-xs text-coffee/70 px-3">
                 Vincula un cuidador para abrir un chat directo.
               </div>
             )}
@@ -138,13 +138,13 @@ function MensajesContent() {
                     </div>
                   ))
                 ) : (
-                  <div className="text-center text-coffee/60 mt-24">
+                  <div className="text-center text-coffee/70 mt-24">
                     <MessageCircle className="w-10 h-10 mx-auto mb-3" />
                     No hay mensajes todavía.
                   </div>
                 )
               ) : (
-                <div className="text-center text-coffee/60 mt-24">
+                <div className="text-center text-coffee/70 mt-24">
                   Selecciona una conversación.
                 </div>
               )}

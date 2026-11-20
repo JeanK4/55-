@@ -234,7 +234,7 @@ if (!montado || cargando || !usuario) {
                           <button
                             onClick={() => handleCancelar(r.id)}
                             disabled={cancelando === r.id}
-                            className="text-xs text-coffee/60 hover:text-clay transition-colors flex items-center gap-1"
+                            className="text-xs text-coffee/70 hover:text-clay transition-colors flex items-center gap-1"
                             aria-label="Cancelar reserva"
                           >
                             {cancelando === r.id

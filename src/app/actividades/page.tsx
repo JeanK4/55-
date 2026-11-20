@@ -159,7 +159,7 @@ export default function ActividadesPage() {
       {/* Barra de búsqueda — RF-01 */}
       <div className="mb-8 space-y-4">
         <div className="relative">
-          <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-coffee/50" />
+          <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-coffee/70" />
           <input
             type="text"
             value={busqueda}

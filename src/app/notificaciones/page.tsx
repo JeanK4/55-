@@ -84,7 +84,7 @@ export default function NotificacionesPage() {
                     <h3 className="font-semibold text-ink">{n.titulo}</h3>
                   </div>
                   <p className="text-sm text-coffee/80">{n.mensaje}</p>
-                  <p className="text-xs text-coffee/50 mt-2">{new Date(n.fechaCreacion).toLocaleString()}</p>
+                  <p className="text-xs text-coffee/70 mt-2">{new Date(n.fechaCreacion).toLocaleString()}</p>
                   {n.enlace && (
                     <Link href={n.enlace} className="text-xs text-clay font-semibold hover:underline">
                       Ver detalle

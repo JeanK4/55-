@@ -189,7 +189,7 @@ export interface FavoritoSalud {
 }
 
 export interface PreferenciasAccesibilidad {
-  tema: 'claro' | 'oscuro';
+  tema: 'sistema' | 'claro' | 'oscuro';
   contraste: 'normal' | 'alto';
   tamanioFuente: 'md' | 'lg' | 'xl' | 'xxl';
   idioma: Idioma;

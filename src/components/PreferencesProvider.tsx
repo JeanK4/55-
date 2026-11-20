@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { PreferenciasAccesibilidad } from '@/lib/types';
 
 const DEFAULT_PREFS: PreferenciasAccesibilidad = {
-  tema: 'claro',
+  tema: 'sistema',
   contraste: 'normal',
   tamanioFuente: 'md',
   idioma: 'es',
@@ -21,29 +21,36 @@ const PrefContext = createContext<PrefContextValue | null>(null);
 
 export function PreferencesProvider({ children }: { children: React.ReactNode }) {
   const [prefs, setPrefsState] = useState<PreferenciasAccesibilidad>(DEFAULT_PREFS);
+  const [cargado, setCargado] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
     try {
-      const parsed = JSON.parse(raw) as PreferenciasAccesibilidad;
-      setPrefsState({ ...DEFAULT_PREFS, ...parsed });
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) setPrefsState({ ...DEFAULT_PREFS, ...(JSON.parse(raw) as PreferenciasAccesibilidad) });
     } catch {
       setPrefsState(DEFAULT_PREFS);
     }
+    setCargado(true);
+
+    // Mantener sincronizadas otras pestañas
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== STORAGE_KEY || !e.newValue) return;
+      try { setPrefsState({ ...DEFAULT_PREFS, ...JSON.parse(e.newValue) }); } catch {}
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, []);
 
   useEffect(() => {
-    if (typeof document === 'undefined') return;
+    // No escribir antes de leer lo guardado (evita pisarlo con los valores por defecto)
+    if (!cargado || typeof document === 'undefined') return;
     const root = document.documentElement;
     root.dataset.theme = prefs.tema;
     root.dataset.contrast = prefs.contraste;
     root.dataset.font = prefs.tamanioFuente;
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
-    }
-  }, [prefs]);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs)); } catch {}
+  }, [prefs, cargado]);
 
   const setPrefs = (cambios: Partial<PreferenciasAccesibilidad>) => {
     setPrefsState(prev => ({ ...prev, ...cambios }));

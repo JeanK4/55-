@@ -4,36 +4,77 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Paleta — tokens como canales RGB ("R G B") para que Tailwind pueda
+ * aplicar opacidad (bg-sand/60, text-coffee/70…) y todo cambie de tema
+ * automáticamente. Contrastes verificados contra el fondo (WCAG AA):
+ *   ink ~16:1 · coffee ~10:1 (≥4.5:1 al 70 %) · clay/sage/rose ≥5.5:1 · gold ≥3:1 (iconos)
+ */
 :root {
-  --color-cream: #FBF7F0;
-  --color-ink: #1F2937;
-  --color-clay: #C2410C;
-  --color-sage: #4A6741;
-  --color-sand: #E8DCC4;
-  --color-coffee: #5C4033;
-  --color-gold: #D4A574;
-  --color-rose: #B8526E;
+  --color-cream:  250 248 245;  /* fondo */
+  --color-sand:   238 233 225;  /* superficies suaves */
+  --color-ink:     28  25  23;  /* texto principal */
+  --color-coffee:  63  54  47;  /* texto secundario / superficie fuerte */
+  --color-clay:   166  63  27;  /* acento: óxido */
+  --color-sage:    63  97  69;  /* verde musgo */
+  --color-rose:   158  63  92;  /* ciruela */
+  --color-gold:   183 121  31;  /* ámbar (estrellas, iconos) */
+
+  /* Sin data-theme o con "sistema": sigue la preferencia del sistema */
+  color-scheme: light dark;
+  accent-color: rgb(var(--color-clay));
 }
 
-html[data-theme="oscuro"] {
-  --color-cream: #12100D;
-  --color-ink: #F7EDE0;
-  --color-clay: #D97945;
-  --color-sage: #8FB186;
-  --color-sand: #2C241E;
-  --color-coffee: #E2C9B4;
-  --color-gold: #E1BC88;
-  --color-rose: #D07A93;
+:root[data-theme="claro"]  { color-scheme: light; }
+:root[data-theme="oscuro"] { color-scheme: dark; }
+
+/* Tokens oscuros: por preferencia del sistema o forzados por el usuario */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="claro"]) {
+    --color-cream:   22  20  18;
+    --color-sand:    38  35  31;
+    --color-ink:    242 238 233;
+    --color-coffee: 210 201 191;
+    --color-clay:   232 135  92;
+    --color-sage:   156 195 160;
+    --color-rose:   227 154 176;
+    --color-gold:   227 181 101;
+  }
+}
+:root[data-theme="oscuro"] {
+  --color-cream:   22  20  18;
+  --color-sand:    38  35  31;
+  --color-ink:    242 238 233;
+  --color-coffee: 210 201 191;
+  --color-clay:   232 135  92;
+  --color-sage:   156 195 160;
+  --color-rose:   227 154 176;
+  --color-gold:   227 181 101;
 }
 
-html[data-contrast="alto"] {
-  --color-ink: #0B0B0B;
-  --color-coffee: #1B1B1B;
+/* Alto contraste (claro y oscuro) */
+:root[data-contrast="alto"] {
+  --color-ink:     0   0   0;
+  --color-coffee: 24  20  17;
+}
+:root[data-theme="oscuro"][data-contrast="alto"] {
+  --color-ink:    255 255 255;
+  --color-coffee: 240 236 230;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="claro"])[data-contrast="alto"] {
+    --color-ink:    255 255 255;
+    --color-coffee: 240 236 230;
+  }
 }
 
-html[data-font="lg"] body { font-size: 20px; }
-html[data-font="xl"] body { font-size: 24px; }
-html[data-font="xxl"] body { font-size: 28px; }
+/*
+ * Tamaño de fuente: se escala en <html> porque las utilidades de Tailwind
+ * usan rem (antes se cambiaba en <body> y no tenía efecto).
+ */
+html[data-font="lg"]  { font-size: 111.11%; }
+html[data-font="xl"]  { font-size: 133.33%; }
+html[data-font="xxl"] { font-size: 155.56%; }
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -41,21 +82,24 @@ html[data-font="xxl"] body { font-size: 28px; }
 }
 
 html {
-  /* Smooth scroll y soporte de tamaño de fuente accesible */
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-ink);
+  background-color: rgb(var(--color-cream));
+  color: rgb(var(--color-ink));
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.7;
+}
+
+::selection {
+  background-color: rgb(var(--color-clay) / 0.25);
 }
 
 /* Foco visible y accesible para teclado — RNF-02 Accesibilidad */
 *:focus-visible {
-  outline: 3px solid var(--color-clay);
+  outline: 3px solid rgb(var(--color-clay));
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -66,52 +110,25 @@ button, a[role="button"] {
   touch-action: manipulation;
 }
 
-/* Decoraciones gráficas: textura de papel */
-.paper-texture {
-  background-image:
-    radial-gradient(circle at 25% 25%, rgba(196, 138, 89, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(74, 103, 65, 0.04) 0%, transparent 50%);
-}
-
-/* Overrides de colores para modo oscuro/alto contraste */
-html[data-theme="oscuro"] .bg-cream { background-color: var(--color-cream); }
-html[data-theme="oscuro"] .text-ink { color: var(--color-ink); }
-html[data-theme="oscuro"] .bg-sand { background-color: var(--color-sand); }
-html[data-theme="oscuro"] .text-coffee { color: var(--color-coffee); }
-html[data-theme="oscuro"] .bg-coffee { background-color: var(--color-coffee); }
-html[data-theme="oscuro"] .bg-clay { background-color: var(--color-clay); }
-html[data-theme="oscuro"] .text-clay { color: var(--color-clay); }
-html[data-theme="oscuro"] .bg-sage { background-color: var(--color-sage); }
-html[data-theme="oscuro"] .text-sage { color: var(--color-sage); }
-html[data-theme="oscuro"] .text-gold { color: var(--color-gold); }
-html[data-theme="oscuro"] .border-coffee\/10 { border-color: rgba(226, 201, 180, 0.2); }
-
-/* Para subrayados orgánicos */
-.underline-wavy {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'%3E%3Cpath d='M0 3 Q 15 0, 30 3 T 60 3' stroke='%23C2410C' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-position: bottom left;
-  background-size: 60px 6px;
-  padding-bottom: 8px;
-}
-
 /* Animaciones */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
 .animate-fade-up {
-  animation: fade-up 0.6s ease-out forwards;
+  animation: fade-up 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Stagger delays */
-.delay-1 { animation-delay: 0.1s; opacity: 0; }
-.delay-2 { animation-delay: 0.2s; opacity: 0; }
-.delay-3 { animation-delay: 0.3s; opacity: 0; }
-.delay-4 { animation-delay: 0.4s; opacity: 0; }
+.delay-1 { animation-delay: 0.08s; opacity: 0; }
+.delay-2 { animation-delay: 0.16s; opacity: 0; }
+.delay-3 { animation-delay: 0.24s; opacity: 0; }
+.delay-4 { animation-delay: 0.32s; opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-fade-up, [class*="delay-"] {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

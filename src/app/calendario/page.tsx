@@ -147,14 +147,14 @@ export default function CalendarioPage() {
       {vista === 'mes' && (
         <div className="grid grid-cols-7 gap-3">
           {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map(d => (
-            <div key={d} className="text-xs font-semibold text-coffee/60 uppercase">{d}</div>
+            <div key={d} className="text-xs font-semibold text-coffee/70 uppercase">{d}</div>
           ))}
           {diasMes.map(d => {
             const eventos = actividadesPorDia(d);
             const esMes = d.getMonth() === fechaBase.getMonth();
             return (
               <div key={d.toISOString()} className={`min-h-[120px] p-3 rounded-soft border ${esMes ? 'bg-cream border-coffee/10' : 'bg-sand/30 border-coffee/10'}`}>
-                <div className="text-xs font-semibold text-coffee/60">{d.getDate()}</div>
+                <div className="text-xs font-semibold text-coffee/70">{d.getDate()}</div>
                 <div className="space-y-1 mt-2">
                   {eventos.slice(0, 2).map(ev => (
                     <div key={ev.id} className="text-xs px-2 py-1 rounded-soft bg-sand/60 text-ink">
@@ -162,7 +162,7 @@ export default function CalendarioPage() {
                     </div>
                   ))}
                   {eventos.length > 2 && (
-                    <div className="text-[10px] text-coffee/60">+{eventos.length - 2} más</div>
+                    <div className="text-[10px] text-coffee/70">+{eventos.length - 2} más</div>
                   )}
                 </div>
               </div>
@@ -188,7 +188,7 @@ export default function CalendarioPage() {
                 </div>
               ))}
             {actividades.length === 0 && (
-              <p className="text-coffee/60">No hay actividades en este rango.</p>
+              <p className="text-coffee/70">No hay actividades en este rango.</p>
             )}
           </div>
         </div>

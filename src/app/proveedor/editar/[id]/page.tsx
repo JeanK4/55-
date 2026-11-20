@@ -299,7 +299,7 @@ export default function EditarActividadPage() {
 
         <div>
           <label htmlFor="imagen" className={labelCls}>
-            URL de imagen <span className="font-normal text-coffee/60">(opcional)</span>
+            URL de imagen <span className="font-normal text-coffee/70">(opcional)</span>
           </label>
           <input id="imagen" type="url" value={form.imagenUrl}
             onChange={e => set('imagenUrl', e.target.value)}

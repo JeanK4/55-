@@ -27,17 +27,11 @@ export default function HomePage() {
     <div className="overflow-hidden">
       {/* HERO */}
       <section className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-12 lg:pt-20 pb-24">
-        {/* Decoración tipográfica de fondo */}
-        <div className="absolute -top-8 right-0 lg:right-10 font-display text-[20rem] lg:text-[28rem] text-clay/[0.04] leading-none pointer-events-none select-none hidden md:block">
-          55+
-        </div>
-
         <div className="relative grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-pill bg-sage/10 text-sage text-sm font-semibold animate-fade-up">
-              <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
+            <p className="text-sm font-semibold text-sage uppercase tracking-wider animate-fade-up">
               Una vida con propósito empieza ahora
-            </div>
+            </p>
 
             <h1 className="font-display text-5xl lg:text-7xl text-ink leading-[1.05] animate-fade-up delay-1">
               Las mejores
@@ -55,7 +49,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-3">
               <Link
                 href="/registro"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-pill bg-clay text-cream text-lg font-semibold hover:bg-coffee transition-colors shadow-lift"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-pill bg-clay text-cream text-lg font-semibold hover:bg-clay/90 transition-colors"
               >
                 Crear mi cuenta gratis
                 <ArrowRight className="w-5 h-5" />
@@ -83,8 +77,7 @@ export default function HomePage() {
 
           {/* Tarjeta visual lateral */}
           <div className="lg:col-span-5 relative animate-fade-up delay-2">
-            <div className="absolute -inset-4 rounded-soft bg-gradient-to-br from-gold/30 to-clay/20 blur-2xl" />
-            <div className="relative bg-cream rounded-soft p-8 shadow-lift border border-coffee/10 space-y-6">
+            <div className="relative bg-cream rounded-soft p-8 shadow-soft border border-coffee/15 space-y-6">
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-sm font-semibold text-clay uppercase tracking-wider">Hoy</p>
@@ -95,9 +88,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="aspect-[4/3] rounded-soft bg-gradient-to-br from-sage to-coffee overflow-hidden relative">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(212,165,116,0.4),transparent_50%)]" />
-                <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-coffee/80 to-transparent" />
+              <div className="aspect-[4/3] rounded-soft bg-sage overflow-hidden relative">
                 <div className="absolute bottom-6 left-6 text-cream">
                   <p className="font-display text-xl">Acuaparque de la Caña</p>
                   <p className="text-sm opacity-80">6:30 a.m. · 2 h 30 min</p>
@@ -160,14 +151,14 @@ export default function HomePage() {
               return (
                 <div
                   key={paso.num}
-                  className="relative bg-cream rounded-soft p-8 border border-coffee/10 hover:border-clay/30 transition-colors group"
+                  className="relative bg-cream rounded-soft p-8 border border-coffee/10 transition-colors group"
                 >
-                  <div className="font-display text-7xl text-clay/15 absolute top-4 right-6 leading-none">
-                    {paso.num}
-                  </div>
                   <div className="relative">
-                    <div className="w-14 h-14 rounded-soft bg-clay/10 flex items-center justify-center mb-6 group-hover:bg-clay group-hover:text-cream transition-colors">
-                      <Icon className="w-6 h-6 text-clay group-hover:text-cream transition-colors" />
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-soft bg-clay/10 flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-clay" aria-hidden="true" />
+                      </div>
+                      <span className="text-sm font-semibold text-coffee/70 tabular-nums">Paso {paso.num}</span>
                     </div>
                     <h3 className="font-display text-2xl text-ink mb-3">{paso.title}</h3>
                     <p className="text-coffee/80">{paso.desc}</p>
@@ -182,10 +173,9 @@ export default function HomePage() {
       {/* CTA FINAL */}
       <section className="max-w-7xl mx-auto px-6 lg:px-10 py-24">
         <div className="relative overflow-hidden rounded-soft bg-coffee p-12 lg:p-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(212,165,116,0.2),transparent_50%)]" />
           <div className="relative max-w-2xl">
             <h2 className="font-display text-4xl lg:text-5xl text-cream leading-tight mb-6">
-              Empieza hoy. <span className="italic text-gold">El primer paso es gratis.</span>
+              Empieza hoy. <span className="italic text-sand">El primer paso es gratis.</span>
             </h2>
             <p className="text-xl text-cream/80 mb-8">
               Crea tu cuenta en menos de un minuto y descubre qué pasa esta semana en Cali.
@@ -193,7 +183,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/registro"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-pill bg-cream text-coffee text-lg font-semibold hover:bg-gold transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-pill bg-cream text-coffee text-lg font-semibold hover:bg-sand transition-colors"
               >
                 Quiero unirme
                 <ArrowRight className="w-5 h-5" />

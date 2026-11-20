@@ -260,7 +260,7 @@ export default function NuevaActividadPage() {
             <input id="edad" type="number" value={form.edadMinima}
               onChange={e => set('edadMinima', parseInt(e.target.value))}
               min={55} max={100} className={inputCls} />
-            <p className="text-xs text-coffee/60 mt-1">Mínimo 55 (R-1)</p>
+            <p className="text-xs text-coffee/70 mt-1">Mínimo 55 (R-1)</p>
           </div>
           <div>
             <label htmlFor="costo" className={labelCls}>Costo (COP)</label>
@@ -289,19 +289,19 @@ export default function NuevaActividadPage() {
         {/* URL Imagen (opcional) */}
         <div>
           <label htmlFor="imagen" className={labelCls}>
-            URL de imagen <span className="font-normal text-coffee/60">(opcional)</span>
+            URL de imagen <span className="font-normal text-coffee/70">(opcional)</span>
           </label>
           <input id="imagen" type="url" value={form.imagenUrl}
             onChange={e => set('imagenUrl', e.target.value)}
             placeholder="https://images.unsplash.com/..."
             className={inputCls} />
-          <p className="text-xs text-coffee/60 mt-1">
+          <p className="text-xs text-coffee/70 mt-1">
             Si la dejas vacía usaremos una imagen predeterminada.
           </p>
         </div>
 
         <div className="pt-2 bg-sand/30 -mx-8 lg:-mx-10 px-8 lg:px-10 py-5 border-t border-coffee/10 rounded-b-soft">
-          <p className="text-sm text-coffee/60 mb-4">
+          <p className="text-sm text-coffee/70 mb-4">
             Puedes crear actividades gratuitas o de pago. El sistema simula el proceso de cobro.
           </p>
 

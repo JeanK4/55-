@@ -269,7 +269,7 @@ export default function ActividadDetallePage() {
                     <Icon className="w-5 h-5 text-clay" />
                   </div>
                   <div>
-                    <div className="text-xs font-semibold text-coffee/60 uppercase tracking-wider">{d.label}</div>
+                    <div className="text-xs font-semibold text-coffee/70 uppercase tracking-wider">{d.label}</div>
                     <div className="font-semibold text-ink mt-0.5">{d.value}</div>
                   </div>
                 </div>
@@ -318,7 +318,7 @@ export default function ActividadDetallePage() {
                   <div key={c.id} className="p-4 rounded-soft bg-sand/50 border border-coffee/10">
                     <div className="flex items-center gap-2 mb-2">
                       <RatingStars value={c.puntaje} readOnly />
-                      <span className="text-xs text-coffee/60">· {new Date(c.fechaCreacion).toLocaleDateString()}</span>
+                      <span className="text-xs text-coffee/70">· {new Date(c.fechaCreacion).toLocaleDateString()}</span>
                     </div>
                     {c.comentario && <p className="text-sm text-coffee/80">{c.comentario}</p>}
                   </div>
@@ -337,7 +337,7 @@ export default function ActividadDetallePage() {
                 <div className="font-display text-4xl text-clay">
                   {actividad.costo === 0 ? 'Gratuita' : `$${actividad.costo.toLocaleString('es-CO')}`}
                 </div>
-                <div className="text-sm text-coffee/60 mt-1">por persona</div>
+                <div className="text-sm text-coffee/70 mt-1">por persona</div>
               </div>
 
               {/* Feedback */}
@@ -402,7 +402,7 @@ export default function ActividadDetallePage() {
               ) : sinCupos ? (
                 <div className="text-center py-4 space-y-3">
                   <div className="font-semibold text-coffee">Sin cupos disponibles</div>
-                  <p className="text-sm text-coffee/60">Lista de espera: {esperaCount} personas.</p>
+                  <p className="text-sm text-coffee/70">Lista de espera: {esperaCount} personas.</p>
                   <button
                     onClick={handleListaEspera}
                     className="w-full py-3 rounded-pill bg-clay text-cream font-semibold hover:bg-coffee transition-colors"
@@ -438,7 +438,7 @@ export default function ActividadDetallePage() {
                 </div>
               )}
 
-              <p className="text-center text-xs text-coffee/50">
+              <p className="text-center text-xs text-coffee/70">
                 La reserva es inmediata. Notificamos al proveedor automáticamente.
               </p>
             </div>

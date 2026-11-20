@@ -184,7 +184,7 @@ function PropuestaCard({
             ))}
           </div>
         ) : (
-          <p className="text-sm text-coffee/60 mb-3">Sé el primero en comentar.</p>
+          <p className="text-sm text-coffee/70 mb-3">Sé el primero en comentar.</p>
         )}
         <div className="flex flex-wrap gap-3">
           <input

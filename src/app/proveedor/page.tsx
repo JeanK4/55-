@@ -113,11 +113,11 @@ export default function ProveedorDashboardPage() {
                           <span className={`text-xs font-semibold px-2.5 py-1 rounded-pill ${cat.color}`}>
                             {cat.emoji} {cat.nombre}
                           </span>
-                          <span className="text-xs text-coffee/60 flex items-center gap-1">
+                          <span className="text-xs text-coffee/70 flex items-center gap-1">
                             <Star className="w-3.5 h-3.5 text-gold" />
                             {promedio === 0 ? 'Nuevo' : promedio.toFixed(1)}
                           </span>
-                          <span className="text-xs text-coffee/60">
+                          <span className="text-xs text-coffee/70">
                             {dias < 0 ? 'Pasada' : dias === 0 ? 'Hoy' : dias === 1 ? 'Mañana' : `En ${dias} días`}
                           </span>
                         </div>
@@ -139,7 +139,7 @@ export default function ProveedorDashboardPage() {
                           <span className="font-medium text-ink">
                             {inscritos} / {a.cuposTotales} inscritos
                           </span>
-                          <span className="text-coffee/60">{pct}% ocupado</span>
+                          <span className="text-coffee/70">{pct}% ocupado</span>
                         </div>
                         <div className="h-2.5 rounded-full bg-sand overflow-hidden">
                           <div

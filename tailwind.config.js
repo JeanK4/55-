@@ -8,15 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Cálida paleta tierra/ocre
-        cream:    '#FBF7F0',  // fondo principal
-        ink:      '#1F2937',  // texto principal
-        clay:     '#C2410C',  // acento cálido (terracota)
-        sage:     '#4A6741',  // verde profundo
-        gold:     '#D4A574',  // dorado suave
-        rose:     '#B8526E',  // rosa profundo (sin ser infantil)
-        sand:     '#E8DCC4',  // arena clara
-        coffee:   '#5C4033',  // marrón profundo
+        // Tokens definidos en globals.css (cambian con el tema claro/oscuro)
+        cream:  'rgb(var(--color-cream) / <alpha-value>)',
+        sand:   'rgb(var(--color-sand) / <alpha-value>)',
+        ink:    'rgb(var(--color-ink) / <alpha-value>)',
+        coffee: 'rgb(var(--color-coffee) / <alpha-value>)',
+        clay:   'rgb(var(--color-clay) / <alpha-value>)',
+        sage:   'rgb(var(--color-sage) / <alpha-value>)',
+        rose:   'rgb(var(--color-rose) / <alpha-value>)',
+        gold:   'rgb(var(--color-gold) / <alpha-value>)',
       },
       fontFamily: {
         // Tipografía editorial cálida — DM Serif para títulos, Plus Jakarta Sans para texto
@@ -38,8 +38,8 @@ module.exports = {
         'pill':  '999px',
       },
       boxShadow: {
-        'soft': '0 4px 24px -8px rgba(92, 64, 51, 0.15)',
-        'lift': '0 12px 40px -12px rgba(92, 64, 51, 0.25)',
+        'soft': '0 1px 2px rgb(0 0 0 / 0.04), 0 4px 16px -6px rgb(0 0 0 / 0.10)',
+        'lift': '0 2px 4px rgb(0 0 0 / 0.04), 0 12px 32px -12px rgb(0 0 0 / 0.18)',
       },
     },
   },

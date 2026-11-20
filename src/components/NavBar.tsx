@@ -10,6 +10,7 @@ import {
   User as UserIcon,
   Bell,
   Sun,
+  Monitor,
   Moon,
   Type,
   Globe,
@@ -161,28 +162,29 @@ export default function NavBar() {
                 {prefsOpen && (
                   <div className="absolute right-0 mt-2 w-64 bg-cream border border-coffee/10 rounded-soft shadow-soft p-4 space-y-4">
                     <div>
-                      <p className="text-xs font-semibold text-coffee/60 uppercase mb-2">Tema</p>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => setPrefs({ tema: 'claro' })}
-                          className={`flex-1 px-3 py-2 rounded-pill text-sm font-medium border ${
-                            prefs.tema === 'claro' ? 'border-clay text-clay' : 'border-coffee/20'
-                          }`}
-                        >
-                          <Sun className="w-4 h-4 inline mr-1" /> Claro
-                        </button>
-                        <button
-                          onClick={() => setPrefs({ tema: 'oscuro' })}
-                          className={`flex-1 px-3 py-2 rounded-pill text-sm font-medium border ${
-                            prefs.tema === 'oscuro' ? 'border-clay text-clay' : 'border-coffee/20'
-                          }`}
-                        >
-                          <Moon className="w-4 h-4 inline mr-1" /> Oscuro
-                        </button>
+                      <p className="text-xs font-semibold text-coffee/70 uppercase mb-2">Tema</p>
+                      <div className="grid grid-cols-3 gap-2" role="group" aria-label="Tema">
+                        {([
+                          { v: 'sistema', label: 'Auto', Icon: Monitor },
+                          { v: 'claro', label: 'Claro', Icon: Sun },
+                          { v: 'oscuro', label: 'Oscuro', Icon: Moon },
+                        ] as const).map(({ v, label, Icon }) => (
+                          <button
+                            key={v}
+                            onClick={() => setPrefs({ tema: v })}
+                            aria-pressed={prefs.tema === v}
+                            title={v === 'sistema' ? 'Seguir la configuración del dispositivo' : undefined}
+                            className={`flex flex-col items-center gap-0.5 px-1 py-2 rounded-soft text-xs font-medium border ${
+                              prefs.tema === v ? 'border-clay bg-clay/10 text-clay' : 'border-coffee/20'
+                            }`}
+                          >
+                            <Icon className="w-4 h-4" aria-hidden="true" /> {label}
+                          </button>
+                        ))}
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-coffee/60 uppercase mb-2">Fuente</p>
+                      <p className="text-xs font-semibold text-coffee/70 uppercase mb-2">Fuente</p>
                       <div className="grid grid-cols-4 gap-2">
                         {(['md', 'lg', 'xl', 'xxl'] as const).map(t => (
                           <button
@@ -198,7 +200,7 @@ export default function NavBar() {
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-coffee/60 uppercase mb-2">Idioma</p>
+                      <p className="text-xs font-semibold text-coffee/70 uppercase mb-2">Idioma</p>
                       <div className="flex gap-2">
                         <button
                           onClick={() => setPrefs({ idioma: 'es' })}
